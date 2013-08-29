@@ -29,28 +29,28 @@ int WINAPI wWinMain(_In_ HINSTANCE hInstance,
     }
     
     PROCESS_INFORMATION pi;
-	STARTUPINFO si;    
-	ZeroMemory(&si, sizeof(si));
-	si.cb = sizeof(si);
-	ZeroMemory(&pi, sizeof(pi));
+    STARTUPINFO si;    
+    ZeroMemory(&si, sizeof(si));
+    si.cb = sizeof(si);
+    ZeroMemory(&pi, sizeof(pi));
     
     if (!CreateProcess(
-		NULL,	/* No module name (use command line) */
-		szCmd,	/* Command line */
-		NULL,	/* Process handle not inheritable */
-		NULL,	/* Thread handle not inheritable */
-		FALSE,	/* Set handle inheritance to FALSE */
-		0,	/* No creation flags */
-		NULL,	/* Use parent's environment block */
-		NULL,	/* Use parent's starting directory */
-		&si,	/* Pointer to STARTUPINFO structure */
-		&pi	/* Pointer to PROCESS_INFORMATION structure */
-	))
+        NULL,    /* No module name (use command line) */
+        szCmd,    /* Command line */
+        NULL,    /* Process handle not inheritable */
+        NULL,    /* Thread handle not inheritable */
+        FALSE,    /* Set handle inheritance to FALSE */
+        0,    /* No creation flags */
+        NULL,    /* Use parent's environment block */
+        NULL,    /* Use parent's starting directory */
+        &si,    /* Pointer to STARTUPINFO structure */
+        &pi    /* Pointer to PROCESS_INFORMATION structure */
+    ))
     {
         MessageBox(NULL, L"Failed to launch exe", L"Error", MB_ICONINFORMATION);
     }
     
     CloseHandle(pi.hProcess);
-	CloseHandle(pi.hThread);    
+    CloseHandle(pi.hThread);    
     return 0;
 }
